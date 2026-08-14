@@ -7,6 +7,14 @@ function LoginStatus() {
   const handleLogout = () => {
     setIsLoggedIn(false);
   };
+
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) return "Good Morning";
+    if (hour < 17) return "Good Afternoon";
+    return "Good Evening";
+  };
+
   return (
     <div className="min-h-screen bg-gray-950 flex items-center justify-center p-6">
       <div className="w-full max-w-md text-center">
@@ -26,10 +34,23 @@ function LoginStatus() {
               <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-950 ring-2 ring-emerald-500/40 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
                 <span className="text-3xl">✓</span>
               </div>
+
+              {/* Online Status Dot */}
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <span className="relative flex h-3 w-3">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-500"></span>
+                </span>
+                <span className="text-xs font-medium text-emerald-400">Online</span>
+              </div>
+
               <h2 className="text-2xl font-bold text-white">
-                Welcome Back!
+                {getGreeting()}!
               </h2>
-              <p className="mt-3 text-gray-400">
+              <p className="mt-2 text-lg text-emerald-400 font-semibold">
+                Welcome Back!
+              </p>
+              <p className="mt-2 text-gray-400">
                 You are successfully logged in.
               </p>
               <button
@@ -44,10 +65,20 @@ function LoginStatus() {
               <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-sky-950 ring-2 ring-sky-500/40 shadow-[0_0_15px_rgba(14,165,233,0.2)]">
                 <span className="text-3xl">👤</span>
               </div>
+
+              {/* Offline Status Dot */}
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <span className="h-3 w-3 rounded-full bg-gray-600"></span>
+                <span className="text-xs font-medium text-gray-500">Offline</span>
+              </div>
+
               <h2 className="text-2xl font-bold text-white">
-                Welcome!
+                {getGreeting()}!
               </h2>
-              <p className="mt-3 text-gray-400">
+              <p className="mt-2 text-lg text-sky-400 font-semibold">
+                Welcome!
+              </p>
+              <p className="mt-2 text-gray-400">
                 Please log in to continue.
               </p>
               <button
