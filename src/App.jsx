@@ -1,5 +1,5 @@
 import React from "react";
-import LoginStatus from "./LoginStatus";
+import LoginStatus from "./components/LoginStatus";
 function App() {
   return <LoginStatus />;
 }
